@@ -63,9 +63,8 @@
 
 ## Instructions
 Requirements: 
-- CUDA 11
+- CUDA 11 ubuntu16-22 detectron2  opencv 
 - Anaconda installed, please refer to the official installation guide: https://docs.anaconda.com/free/anaconda/install/index.html 
-
 1. Create a local clone of Phishpedia
 ```
 git clone https://github.com/lindsey98/Phishpedia.git
@@ -79,9 +78,23 @@ chmod +x ./setup.sh
 ```
 If you encounter any problem in downloading the models, you can manually download them from here https://huggingface.co/Kelsey98/Phishpedia. And put them into the corresponding conda environment.
 
-3. 
+3.Environment Deployment
+Below is an example of a CUDA11 environment configuration: If you choose a different version, please install the dependencies of each version accordingly, and follow this example step by step to successfully configure the experimental environment
 ```
-conda activate myenv
+ conda create --name pfish
+ conda activate pfish
+ pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu118
+ 
+ pip install cython
+ pip install 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
+
+ pip install 'git+https://github.com/facebookresearch/detectron2.git'
+
+ pip install opencv-python
+```  
+4. 
+```
+conda activate pfish
 ```
 
 Run in Python to test a single website
